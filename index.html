@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#100b27">
+<meta name="application-name" content="Brain Trap">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="Brain Trap – Only 5% Can Solve It! Think Smart. Don't Get Trapped!">
+<link rel="manifest" href="manifest.json">
+<title>Brain Trap – Only 5% Can Solve It! | Version 2.0</title>
+<style>
+:root{--bg:#100b27;--panel:rgba(34,25,70,.82);--pink:#ff4fc8;--blue:#39d7ff;--yellow:#ffe66d;--purple:#9b72ff;--text:#fff;--muted:#c5bddf;--green:#58f0ae}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:radial-gradient(circle at 15% 10%,#392064 0,transparent 35%),radial-gradient(circle at 90% 80%,#152d63 0,transparent 34%),linear-gradient(145deg,#100b27,#090d22);overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0;color:white;touch-action:manipulation}.app{max-width:760px;margin:auto;padding:18px 16px 38px;min-height:100vh}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.brand{display:flex;align-items:center;gap:10px}.logo{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;font-size:27px;background:linear-gradient(145deg,#ff4fc8,#795cff 55%,#28d9ff);box-shadow:0 8px 24px #a33bff66;transform:rotate(-7deg)}.brand h1{font-size:19px;line-height:1.05;margin:0}.brand small{color:var(--muted);font-size:11px;letter-spacing:1.2px}.iconbtn{width:42px;height:42px;border-radius:14px;background:#ffffff12;border:1px solid #ffffff25;font-size:18px}
+.hero{text-align:center;padding:18px 10px 24px}.brain{font-size:82px;display:inline-block;filter:drop-shadow(0 8px 20px #ff4fc877);animation:float 2.8s ease-in-out infinite}@keyframes float{50%{transform:translateY(-10px) rotate(4deg)}}.hero h2{font-size:clamp(30px,8vw,48px);line-height:1;margin:10px 0;background:linear-gradient(90deg,#fff,#ff83dc,#71eaff);background-clip:text;color:transparent;font-weight:950;letter-spacing:-1.5px}.tag{color:var(--yellow);font-weight:800;letter-spacing:1.3px;font-size:12px}.sub{color:var(--muted);max-width:440px;margin:12px auto 20px;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:12px 0 18px}.stat,.card{background:linear-gradient(145deg,#ffffff13,#ffffff08);border:1px solid #ffffff20;border-radius:20px;box-shadow:0 12px 28px #0003;backdrop-filter:blur(12px)}.stat{padding:12px 7px;text-align:center}.stat b{display:block;font-size:22px;color:var(--yellow)}.stat span{font-size:10px;color:var(--muted);letter-spacing:.8px;text-transform:uppercase}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:11px}.btn{padding:15px 14px;border-radius:16px;font-weight:850;letter-spacing:.2px;background:linear-gradient(110deg,#ff45bb,#925bff);box-shadow:0 7px 0 #5d2a9c,0 12px 22px #a43fff38;transition:transform .12s,filter .12s}.btn:active{transform:translateY(4px);box-shadow:0 3px 0 #5d2a9c}.btn.secondary{background:linear-gradient(110deg,#168ec8,#665dff);box-shadow:0 7px 0 #244c9b,0 12px 22px #238bff35}.btn.gold{background:linear-gradient(110deg,#ffb52e,#ff5d85);box-shadow:0 7px 0 #a8493f,0 12px 22px #ff9d3535}.btn.ghost{background:#ffffff12;border:1px solid #ffffff28;box-shadow:none}.wide{grid-column:1/-1}
+.card{padding:19px;margin:12px 0}.hidden{display:none!important}.screen-title{font-size:23px;margin:3px 0 5px}.muted{color:var(--muted)}.topline{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px}.pill{padding:7px 11px;border-radius:99px;background:#ffffff14;color:#dcd5ff;font-size:12px;font-weight:800;border:1px solid #ffffff20}.question{font-size:clamp(21px,5vw,29px);font-weight:850;line-height:1.25;margin:20px 0}.answers{display:grid;gap:10px}.answer{padding:15px;text-align:left;border-radius:15px;background:#ffffff0e;border:1px solid #ffffff25;font-weight:700;display:flex;gap:12px;align-items:center;min-height:56px}.answer .letter{width:30px;height:30px;border-radius:10px;background:#ffffff18;display:grid;place-items:center;color:var(--blue);font-weight:900;flex-shrink:0}.answer:active{transform:scale(.99)}.answer.correct{border-color:var(--green);background:#1a9e6940}.answer.wrong{border-color:#ff628d;background:#b52c5840}.feedback{padding:14px;border-radius:15px;margin-top:13px;font-weight:750}.feedback.good{background:#1b9b6940;color:#9dffd0}.feedback.bad{background:#b52c5840;color:#ffc0d2}.progress{height:9px;border-radius:20px;background:#ffffff1b;overflow:hidden;margin:10px 0 16px}.progress>i{display:block;height:100%;border-radius:20px;background:linear-gradient(90deg,var(--pink),var(--blue));transition:width .3s}.timer{font-size:15px;font-weight:900;color:var(--yellow)}.timer.danger{color:#ff658c;animation:pulse .6s infinite alternate}@keyframes pulse{to{opacity:.45}}.levelgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:15px}.level{aspect-ratio:1;border-radius:13px;background:#ffffff12;border:1px solid #ffffff20;font-weight:850}.level.open{background:linear-gradient(145deg,#7a4bdb,#287fbd);border:0}.level.done{background:linear-gradient(145deg,#168d69,#36b4ad);border:0}.level:disabled{opacity:.35;cursor:not-allowed}.result{text-align:center;padding:20px 8px}.result .emoji{font-size:70px}.result h2{font-size:30px;margin:8px}.result p{color:var(--muted)}.small{font-size:12px}.footer{text-align:center;color:#9289b4;font-size:11px;margin-top:26px}
+@media(min-width:600px){.app{padding-top:28px}.hero{padding-top:25px}.levelgrid{grid-template-columns:repeat(8,1fr)}}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div class="brand"><div class="logo">🧠</div><div><h1>BRAIN TRAP</h1><small>ONLY 5% CAN SOLVE IT!</small></div></div><button class="iconbtn" id="soundBtn" aria-label="Toggle sound">🔊</button></header>
+<main>
+<section id="home">
+<div class="hero"><div class="brain">🧠</div><div class="tag">THINK SMART. DON'T GET TRAPPED!</div><h2>Brain Trap</h2><p class="sub">Ready to challenge your brain? Solve tricky puzzles, beat the timer and prove you're a Brain Master.</p></div>
+<div class="stats"><div class="stat"><b id="homeLevel">1</b><span>Current level</span></div><div class="stat"><b id="homeScore">0</b><span>Total score</span></div><div class="stat"><b id="homeBest">0</b><span>High score</span></div></div>
+<div class="actions"><button class="btn wide" id="playBtn">🚀 PLAY NOW</button><button class="btn secondary" id="dailyBtn">📅 Daily Challenge</button><button class="btn gold" id="levelsBtn">🗺️ Levels</button><button class="btn ghost" id="timeBtn">⏱️ 60-Second Rush</button><button class="btn ghost" id="leaderBtn">🏆 Leaderboard</button><button class="btn ghost" id="howBtn">❓ How to Play</button><button class="btn ghost wide" id="shareHome">📤 Challenge a Friend</button></div>
+</section>
+<section id="game" class="hidden">
+<div class="topline"><button class="iconbtn" id="backBtn" aria-label="Back to home">←</button><span class="pill" id="modePill">LEVEL 1</span><span class="timer" id="timer">∞</span></div>
+<div class="topline"><span class="muted small" id="category">EASY BRAIN TRAPS</span><b id="scoreLabel">⭐ 0</b></div>
+<div class="topline"><span class="pill" id="coinLabel">🪙 5 coins</span><button class="btn gold" id="hintBtn" style="padding:9px 13px;border-radius:12px">💡 Use Hint (2)</button></div><div class="progress"><i id="progressBar" style="width:1%"></i></div>
+<div class="card"><div class="topline"><span class="pill" id="qCount">QUESTION 1/100</span><span class="pill" id="streakLabel">🔥 Streak 0</span></div><div class="question" id="question">Loading puzzle...</div><div class="answers" id="answers"></div><div id="feedback" class="hidden"></div></div>
+<button class="btn ghost wide hidden" id="nextBtn">NEXT ➜</button>
+</section>
+<section id="levels" class="hidden"><div class="topline"><button class="iconbtn" data-home>←</button><span class="pill">100 LEVELS</span></div><h2 class="screen-title">Choose your challenge</h2><p class="muted small">Unlock levels by solving the previous puzzle.</p><div class="levelgrid" id="levelGrid"></div></section>
+<section id="result" class="hidden"><div class="card result"><div class="emoji" id="resultEmoji">🏆</div><h2 id="resultTitle">Amazing!</h2><p id="resultText">You did it.</p><div class="stats"><div class="stat"><b id="resultScore">0</b><span>Score</span></div><div class="stat"><b id="resultCorrect">0</b><span>Correct</span></div><div class="stat"><b id="resultBest">0</b><span>Best score</span></div></div><div class="actions"><button class="btn" id="againBtn">Play Again</button><button class="btn secondary" id="resultShare">Share Score</button><button class="btn ghost wide" data-home>Home</button></div></div></section>
+<section id="info" class="hidden"><div class="topline"><button class="iconbtn" data-home>←</button></div><div class="card" id="infoContent"></div></section>
+</main><div class="footer">BRAIN TRAP 2.0 • Think Smart. Don't Get Trapped! • Your scores stay on this device</div>
+</div>
+<script>
+const puzzles = [
+["What has hands but cannot clap?","A clock","A robot","A statue","A baby",0,"Riddle"],
+["Which month has 28 days?","February only","All months","June","December",1,"Tricky"],
+["If you overtake the person in 2nd place, what place are you in?","1st","2nd","3rd","Last",1,"Logic"],
+["What gets wetter the more it dries?","A towel","Rain","A sponge","A river",0,"Riddle"],
+["How many animals of each kind did Moses take on the ark?","Two","Seven","One","None",3,"Trap"],
+["What has a neck but no head?","A bottle","A giraffe","A shirt","A snake",0,"Riddle"],
+["A farmer has 17 sheep. All but 9 run away. How many remain?","8","9","17","0",1,"Math Trap"],
+["What can travel around the world while staying in one corner?","A stamp","A plane","The sun","A map",0,"Riddle"],
+["Which is heavier: 1 kg of iron or 1 kg of cotton?","Iron","Cotton","Same weight","Cannot tell",2,"Math Trap"],
+["What has one eye but cannot see?","A needle","A potato","A storm","A camera",0,"Riddle"],
+["You have 3 apples and take away 2. How many do you have?","1","2","3","5",1,"Trap"],
+["What goes up but never comes down?","A balloon","Your age","Smoke","A lift",1,"Riddle"],
+["Before Mount Everest was discovered, what was the highest mountain?","K2","Everest","Kangchenjunga","No mountain",1,"Trap"],
+["What has keys but cannot open locks?","A piano","A guard","A map","A keyboard only",0,"Riddle"],
+["A rooster lays an egg on a roof. Which way does it roll?","Left","Right","It stays","Roosters don't lay eggs",3,"Trap"],
+["What has cities but no houses, forests but no trees, and water but no fish?","A map","A painting","A dream","A globe",0,"Riddle"],
+["If 5 machines make 5 toys in 5 minutes, how long for 100 machines to make 100 toys?","100 minutes","5 minutes","20 minutes","1 minute",1,"Logic"],
+["What can you catch but not throw?","A ball","A cold","A fish","A frisbee",1,"Riddle"],
+["Which word is spelled incorrectly in every dictionary?","Wrong","Incorrectly","Dictionary","Every",1,"Word Trap"],
+["What has a thumb and four fingers but is not alive?","A glove","A hand","A robot","A puppet",0,"Riddle"],
+["A plane crashes on the border of two countries. Where do they bury survivors?","Country A","Country B","At the border","Nowhere",3,"Trap"],
+["How many times can you subtract 10 from 100?","10","9","1","Unlimited",2,"Math Trap"],
+["What has many teeth but cannot bite?","A comb","A shark","A zipper","A saw",0,"Riddle"],
+["What begins with T, ends with T, and has T in it?","A teapot","A tent","A toast","A ticket",0,"Word Trap"],
+["If there are 6 eggs and you take 2, how many eggs do you have?","4","2","6","8",1,"Logic"],
+["What has a head and a tail but no body?","A coin","A snake","A kite","A comet",0,"Riddle"],
+["A doctor gives you 3 pills and says take one every half hour. How long until all are taken?","1 hour","1.5 hours","30 minutes","2 hours",0,"Logic"],
+["What runs but never walks?","A river","A dog","A clock","A child",0,"Riddle"],
+["How many letters are in 'the alphabet'?","26","11","10","8",2,"Word Trap"],
+["What has an end but no beginning?","A circle","A stick","A rope","A road",0,"Riddle"],
+["If yesterday was tomorrow, today would be Friday. What day is today?","Wednesday","Thursday","Saturday","Sunday",1,"Logic"],
+["What can fill a room but takes up no space?","Light","Furniture","Air","Smoke",0,"Riddle"],
+["A basket has 6 oranges. You take 4. How many are yours?","2","4","6","10",1,"Trap"],
+["What has 13 hearts but no other organs?","A deck of cards","A hospital","An octopus","A toy",0,"Riddle"],
+["What goes through towns and over hills but never moves?","A road","A train","A river","A cloud",0,"Riddle"],
+["If you spell 'sit' as 'S-I-T', what do you spell 'stand' as?","S-T-A-N-D","S-I-T","On your feet","S-T-A-N",2,"Word Trap"],
+["A man walks in the rain without an umbrella or hat, but not a hair gets wet. Why?","He is bald","Rain stopped","He ran","He wore a hood",0,"Trap"],
+["What has branches but no fruit, trunk or leaves?","A bank","A tree","A river","A family",0,"Riddle"],
+["What is always in front of you but cannot be seen?","The future","Your nose","Air","Your shadow",0,"Riddle"],
+["If 2 is company and 3 is a crowd, what are 4 and 5?","9","A party","A crowd","45",0,"Word Trap"],
+["A clock shows 3:15. What is the angle between the hands?","0°","7.5°","15°","90°",1,"Math Trap"],
+["What number becomes smaller when you turn it upside down?","9","8","6","0",0,"Visual Thinking"],
+["A girl has as many brothers as sisters. Each brother has twice as many sisters as brothers. How many boys and girls?","3 boys, 4 girls","4 boys, 3 girls","2 boys, 3 girls","3 boys, 3 girls",0,"Logic"],
+["What can be cracked, made, told and played?","A joke","An egg","A code","A game",0,"Riddle"],
+["You see a boat full of people. It has not sunk, but when you look again you don't see a single person. Why?","They jumped","They are married","It sailed away","It is dark",1,"Trap"],
+["What is so fragile that saying its name breaks it?","Silence","Glass","Ice","A promise",0,"Riddle"],
+["If a red house is made of red bricks and a blue house of blue bricks, what is a greenhouse made of?","Green bricks","Glass","Wood","Leaves",1,"Trap"],
+["Which number comes next: 2, 6, 12, 20, 30, ?","36","40","42","44",2,"Pattern"],
+["A man has 4 daughters, and each daughter has a brother. How many children?","8","5","4","9",1,"Logic"],
+["What is at the end of a rainbow?","Gold","The letter W","Rain","Sky",1,"Word Trap"],
+["If you have one match and enter a dark room with a candle, lamp and fireplace, what do you light first?","Candle","Lamp","Fireplace","Match",3,"Trap"],
+["What has words but never speaks?","A book","A parrot","A radio","A teacher",0,"Riddle"],
+["A bat and ball cost ₹110. The bat costs ₹100 more than the ball. How much is the ball?","₹10","₹5","₹15","₹20",1,"Math Trap"],
+["What comes once in a minute, twice in a moment, but never in a thousand years?","The letter M","Time","A second","The letter T",0,"Word Trap"],
+["If you are running a race and pass the last person, what position are you in?","Last","Second last","Impossible","First",2,"Logic"],
+["How many sides does a circle have?","One curved side","Two","Zero","Infinite",0,"Visual Thinking"],
+["A man shaves several times a day but still has a beard. Who is he?","A barber","A magician","A farmer","A model",0,"Trap"],
+["What has four wheels and flies?","A garbage truck","An aeroplane","A bicycle","A bird",0,"Riddle"],
+["Which weighs more: a pound of feathers or a pound of gold?","Feathers","Gold","Same","Depends on size",2,"Math Trap"],
+["If you throw a blue stone into the Red Sea, what does it become?","Red","Blue","Wet","Lost",2,"Trap"],
+["What is the next letter: O, T, T, F, F, S, S, ?","E","N","T","A",0,"Pattern"],
+["A family has two parents and six sons. Each son has one sister. How many people?","16","9","10","14",2,"Logic"],
+["What has a ring but no finger?","A telephone","A tree","A bell","A key",0,"Riddle"],
+["You enter a room with 10 candles. A draft blows out 2. How many candles are left eventually?","8","2","10","0",1,"Logic"],
+["What is always coming but never arrives?","Tomorrow","Today","A train","The mail",0,"Riddle"],
+["A snail climbs 3 metres up a wall each day and slips 2 metres at night. How long to climb a 10-metre wall?","8 days","10 days","9 days","7 days",0,"Math Trap"],
+["What has a bed but never sleeps?","A river","A cat","A hotel","A person",0,"Riddle"],
+["If 10 fish are in a tank and 2 drown, how many are left?","8","10","2","0",1,"Trap"],
+["What can you hold in your right hand but never in your left?","Your left elbow","Your right elbow","Your left hand","A cup",0,"Logic"],
+["Which is correct: 'The yolk of the egg are white' or 'The yolk of the egg is white'?","First","Second","Both","Neither; yolk is yellow",3,"Trap"],
+["What has lots of eyes but cannot see?","A potato","A spider","A storm","A needle",0,"Riddle"],
+["A bus driver goes the wrong way on a one-way street. A police officer sees him but does nothing. Why?","The officer knows him","He is walking","The bus is empty","It is a parade",1,"Trap"],
+["What gets bigger the more you take away?","A hole","A pile","A shadow","A balloon",0,"Riddle"],
+["How many birthdays does the average person have?","One","Many","100","12",0,"Trap"],
+["What has an eye at the centre but no vision?","A hurricane","A potato","A needle","A camera",0,"Riddle"],
+["A farmer has 20 cows. All but 7 leave. How many are left?","13","7","20","0",1,"Logic"],
+["What is lighter than a feather, yet the strongest person cannot hold it for long?","Breath","Paper","A thought","Air",0,"Riddle"],
+["What comes down but never goes up?","Rain","Age","Smoke","A balloon",0,"Riddle"],
+["If you multiply all numbers on a phone keypad, what is the answer?","0","1","362880","45",0,"Math Trap"],
+["What has a spine but no bones?","A book","A fish","A person","A tree",0,"Riddle"],
+["A rooster is sitting on a roof facing north. Which side does its egg fall?","North","South","East","No egg",3,"Trap"],
+["What can be seen in the middle of March and April but not at the beginning or end?","The letter R","Spring","Rain","The sun",0,"Word Trap"],
+["You have 12 socks: 6 black and 6 white in a dark drawer. How many must you take to guarantee a matching pair?","2","3","4","7",1,"Logic"],
+["What has a bottom at the top?","Your legs","A mountain","A bottle","A shoe",0,"Riddle"],
+["A plane flies from Delhi to Kolkata in 2 hours. On the return trip it takes 120 minutes. Which is faster?","Delhi to Kolkata","Return trip","Both same","Cannot tell",2,"Math Trap"],
+["What can be swallowed but can also swallow you?","Pride","Water","A story","A hole",3,"Riddle"],
+["A man is found dead in a field with an unopened package beside him. What happened?","A parachute failed","He fell","A box fell","He was ill",0,"Logic"],
+["What has no life but can die?","A battery","A plant","A fish","A person",0,"Riddle"],
+["What word becomes shorter when you add two letters to it?","Short","Small","Tiny","Little",0,"Word Trap"],
+["If 8 people take 8 hours to build 8 walls, how long for 4 people to build 4 walls?","4 hours","8 hours","2 hours","16 hours",1,"Logic"],
+["What has a face and two hands but no arms or legs?","A clock","A doll","A coin","A mirror",0,"Riddle"],
+["A man pushes his car to a hotel and tells the owner he is bankrupt. Why?","He crashed","He is playing Monopoly","He lost his wallet","He is a driver",1,"Logic"],
+["What is full of holes but still holds water?","A sponge","A net","A bucket","A sieve",0,"Riddle"],
+["If you have 6 coins and give half to a friend, how many coins do you have left?","2","3","4","6",1,"Math"],
+["What has no beginning, end or middle?","A circle","A line","A dot","A ring",0,"Visual Thinking"],
+["A person was born in 2005 and died in 2000. How is this possible?","Time travel","BC dates","Typo","Impossible",1,"Logic"],
+["What starts with E, ends with E, and contains one letter?","An envelope","Eagle","Eve","Engine",0,"Riddle"],
+["If a dozen eggs cost ₹60, what does one egg cost?","₹10","₹6","₹5","₹12",2,"Math"],
+["What can be broken without being touched?","A promise","A glass","A plate","A phone",0,"Riddle"],
+["A man looks at a photo and says: 'Brothers and sisters I have none, but this man's father is my father's son.' Who is in the photo?","His father","His son","Himself","His uncle",1,"Logic"]
+];
+const $=id=>document.getElementById(id);
+let state=load(), mode="level", current=0, score=0, streak=0, correct=0, timeLeft=60, timerId=null, locked=false, soundOn=true, rushIndex=0, rushQuestions=[], dailyDone=false;
+state.coins=Number.isFinite(state.coins)?state.coins:5; state.dailyDate=state.dailyDate||"";
+function load(){try{return JSON.parse(localStorage.getItem("brainTrapSave"))||{unlocked:1,completed:[],score:0,best:0,history:[]}}catch(e){return {unlocked:1,completed:[],score:0,best:0,history:[]}}}
+function save(){try{localStorage.setItem("brainTrapSave",JSON.stringify(state))}catch(e){console.warn("Could not save game progress",e)}}
+function show(id){["home","game","levels","result","info"].forEach(s=>$(s).classList.toggle("hidden",s!==id));if(id==="home")refreshHome()}
+function refreshHome(){$("homeLevel").textContent=state.unlocked;$("homeScore").textContent=state.score;$("homeBest").textContent=state.best}
+function categoryFor(n){if(n<=20)return "EASY BRAIN TRAPS";if(n<=40)return "TRICKY QUESTIONS";if(n<=60)return "LOGIC MASTER";if(n<=80)return "MIND BLOWING PUZZLES";return "IMPOSSIBLE BRAIN CHALLENGES"}
+function tone(freq,duration=0.12,type="sine"){if(!soundOn)return;try{let c= new (window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(.07,c.currentTime);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+duration);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+duration)}catch(e){}}
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function startLevel(n){mode="level";current=n-1;score=0;streak=0;correct=0;show("game");renderQuestion()}
+function startDaily(){const today=new Date().toLocaleDateString("en-CA");if(state.dailyDate===today){show("info");$("infoContent").innerHTML="<h2>📅 Daily Challenge Completed</h2><p class=muted>You have already completed today’s challenge. Come back tomorrow for a new puzzle!</p>";return}mode="daily";let day=Math.floor(Date.now()/86400000);current=(day*7)%puzzles.length;score=0;streak=0;correct=0;show("game");renderQuestion()}
+function startRush(){mode="rush";score=0;streak=0;correct=0;timeLeft=60;rushQuestions=shuffle(puzzles.map((_,i)=>i));rushIndex=0;show("game");renderQuestion();clearInterval(timerId);timerId=setInterval(()=>{timeLeft--;$("timer").textContent="⏱ "+timeLeft+"s";if(timeLeft<=10)$("timer").classList.add("danger");if(timeLeft<=0)finish("Time's up!");},1000)}
+function renderQuestion(){locked=false;$("feedback").className="hidden";$("feedback").textContent="";$("nextBtn").classList.add("hidden");let n=mode==="rush"?rushQuestions[rushIndex]:current;let p=puzzles[n];$("modePill").textContent=mode==="rush"?"60-SECOND RUSH":mode==="daily"?"DAILY CHALLENGE":"LEVEL "+(current+1);$("timer").textContent=mode==="rush"?"⏱ "+timeLeft+"s":"∞";$("timer").classList.toggle("danger",mode==="rush"&&timeLeft<=10);$("category").textContent=p[6].toUpperCase();$("scoreLabel").textContent="⭐ "+score;$("coinLabel").textContent="🪙 "+state.coins+" coins";$("streakLabel").textContent="🔥 Streak "+streak;$("qCount").textContent=mode==="rush"?"QUESTION "+(rushIndex+1):mode==="daily"?"TODAY'S PUZZLE":"QUESTION "+(current+1)+"/100";$("progressBar").style.width=((mode==="rush"?timeLeft/60:((current+1)/100))*100)+"%";$("question").textContent=p[0];$("answers").innerHTML="";p.slice(1,5).forEach((a,i)=>{let b=document.createElement("button");b.className="answer";b.innerHTML='<span class="letter">'+String.fromCharCode(65+i)+'</span><span></span>';b.lastChild.textContent=a;b.addEventListener("click",()=>answer(i,b));$("answers").appendChild(b)})}
+function answer(i,btn){
+ if(locked)return;
+ const p=puzzles[mode==="rush"?rushQuestions[rushIndex]:current];
+ const ok=i===p[5];
+ if(!ok){
+  streak=0;tone(150,.25,"triangle");btn.classList.add("wrong");btn.disabled=true;
+  $("feedback").className="feedback bad";
+  $("feedback").textContent=["🙈 Oops! Try another answer.","😂 Not quite! You can try again.","🌀 Sneaky one! Give it another thought."][Math.floor(Math.random()*3)];
+  return;
+ }
+ locked=true;
+ [...$("answers").children].forEach((b,j)=>{b.disabled=true;if(j===p[5])b.classList.add("correct")});
+ btn.classList.add("correct");streak++;correct++;state.coins+=1;
+ let pts=10+Math.min(streak-1,5)*2;if(mode==="rush")pts+=Math.max(0,Math.floor(timeLeft/10));score+=pts;
+ tone(660,.12);setTimeout(()=>tone(880,.18),100);
+ $("feedback").className="feedback good";$("feedback").textContent="🎉 Brilliant! Correct Answer! +"+pts+" points";
+ if(mode==="level"){state.completed=[...new Set([...state.completed,current+1])];state.unlocked=Math.max(state.unlocked,Math.min(100,current+2));state.score+=pts;}
+ save();$("coinLabel").textContent="🪙 "+state.coins+" coins";
+ $("scoreLabel").textContent="⭐ "+score;$("streakLabel").textContent="🔥 Streak "+streak;
+ if(mode==="rush"){$("nextBtn").classList.remove("hidden");$("nextBtn").textContent="NEXT PUZZLE ➜"}
+ else if(mode==="daily"){$("nextBtn").classList.remove("hidden");$("nextBtn").textContent="SEE RESULT"}
+ else{$("nextBtn").classList.remove("hidden");$("nextBtn").textContent=current>=99?"FINISH GAME":"NEXT LEVEL ➜"}
+}
+function next(){if(mode==="rush"){rushIndex++;if(rushIndex>=rushQuestions.length)rushQuestions=shuffle(puzzles.map((_,i)=>i));renderQuestion()}else if(mode==="daily"){finish("Daily challenge complete!")}else if(current>=99){finish("You conquered all 100 levels!")}else{current++;renderQuestion()}}
+function finish(title){clearInterval(timerId);if(mode==="daily")state.dailyDate=new Date().toLocaleDateString("en-CA");state.best=Math.max(state.best,score);state.history.unshift({date:new Date().toLocaleDateString(),score,mode});state.history=state.history.slice(0,10);save();$("resultEmoji").textContent=mode==="rush"?"⏱️":"🏆";$("resultTitle").textContent=title;$("resultText").textContent=mode==="rush"?"You solved "+correct+" puzzles in 60 seconds!":mode==="daily"?"Come back tomorrow for another brain teaser!":"Great effort! Keep your brain sharp."; $("resultScore").textContent=score;$("resultCorrect").textContent=correct;$("resultBest").textContent=state.best;save();show("result")}
+function levels(){show("levels");$("levelGrid").innerHTML="";for(let i=1;i<=100;i++){let b=document.createElement("button");b.className="level "+(state.completed.includes(i)?"done":i<=state.unlocked?"open":"");b.textContent=i;b.disabled=i>state.unlocked;b.addEventListener("click",()=>startLevel(i));$("levelGrid").appendChild(b)}}
+function share(){let msg="I played Brain Trap 🧠🔥 and scored "+score+" points! Can you beat my score? Only 5% can solve it! Think Smart. Don't Get Trapped!";let url="https://wa.me/?text="+encodeURIComponent(msg);if(navigator.share){navigator.share({title:"Brain Trap Challenge",text:msg}).catch(()=>{})}else{window.open(url,"_blank","noopener")}}
+$("playBtn").onclick=()=>startLevel(state.unlocked);$("dailyBtn").onclick=startDaily;$("levelsBtn").onclick=levels;$("timeBtn").onclick=startRush;$("leaderBtn").onclick=()=>{show("info");$("infoContent").innerHTML="<h2>🏆 Local Leaderboard</h2><p class='muted'>Your best scores on this device.</p>"+(state.history.length?state.history.map((h,i)=>"<p>"+(i+1)+". "+h.date+" — <b>"+h.score+" pts</b> ("+h.mode+")</p>").join(""):"<p>No scores yet. Play a game to get on the board!</p>")};$("howBtn").onclick=()=>{show("info");$("infoContent").innerHTML="<h2>❓ How to Play</h2><p>1. Read each tricky question carefully.</p><p>2. Choose one of four answers.</p><p>3. Correct answers earn points and unlock the next level.</p><p>4. Wrong answers let you try again.</p><p>5. In 60-Second Rush, solve as many as you can before time runs out.</p><p>6. Your progress and high score are saved on this device.</p>"};$("backBtn").onclick=()=>{clearInterval(timerId);show("home")};$("nextBtn").onclick=next;$("againBtn").onclick=()=>mode==="rush"?startRush():mode==="daily"?startDaily():startLevel(state.unlocked);$("resultShare").onclick=share;$("hintBtn").onclick=()=>{if(locked)return;if(state.coins<2){$("feedback").className="feedback bad";$("feedback").textContent="Not enough coins. Solve puzzles to earn coins!";return}const p=puzzles[mode==="rush"?rushQuestions[rushIndex]:current];const candidates=[...$("answers").children].filter((b,i)=>i!==p[5]&&!b.disabled);if(!candidates.length){$("feedback").className="feedback bad";$("feedback").textContent="No hint needed — choose the remaining answer.";return}const target=candidates[Math.floor(Math.random()*candidates.length)];target.disabled=true;target.style.opacity=".35";state.coins-=2;save();$("coinLabel").textContent="🪙 "+state.coins+" coins";$("feedback").className="feedback good";$("feedback").textContent="💡 Hint used! One wrong option removed."};$("shareHome").onclick=share;$("soundBtn").onclick=()=>{soundOn=!soundOn;$("soundBtn").textContent=soundOn?"🔊":"🔇";if(soundOn)tone(520)};document.querySelectorAll("[data-home]").forEach(b=>b.onclick=()=>show("home"));
+if("serviceWorker" in navigator && location.protocol.startsWith("http"))window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+refreshHome();
+</script>
+</body></html>
